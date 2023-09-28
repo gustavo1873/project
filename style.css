@@ -79,6 +79,7 @@ Portanto, há pelo menos 2 maneiras de alinhar a imagem, sendo: transformar o im
   right: 0;
   z-index: 1;
   transform: translateY(-50%);
+  animation: switch-on-slide 0.3s;
 }
 #switch span {
   display: block;
@@ -91,10 +92,12 @@ Portanto, há pelo menos 2 maneiras de alinhar a imagem, sendo: transformar o im
   border-radius: 9999px;
 }
 .light #switch button {
-  left: 0;
-  right: initial;
+  animation: switch-off-slide 0.3s forwards;
 }
 
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
 /* links */
 ul {
   list-style: none;
@@ -151,5 +154,22 @@ footer {
   }
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+@keyframes switch-off-slide {
+  from {
+    right: 0;
+  }
+  to {
+    right: 50%;
+  }
+}
+@keyframes switch-on-slide {
+  from {
+    right: 50%;
+  }
+  to {
+    right: 0;
   }
 }
